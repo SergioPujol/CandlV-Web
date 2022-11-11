@@ -1,0 +1,696 @@
+:root {
+    --primary-color: #282c34;
+    --secondary-color: #21252b;
+    --tertiary-color: #3a3d41;
+
+    --blue-color: #5474B3;
+    --white-color: #fff;
+}
+
+body {
+    background:var(--primary-color) !important;
+}
+
+/** Scrollbar **/
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+::-webkit-scrollbar-thumb
+{
+    border: 3px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: var(--tertiary-color);
+}
+
+/** Launcher **/
+
+body.launcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.launcher .auth {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+body.launcher .auth .img-container {
+    height: 220px;
+}
+
+body.launcher .auth .img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+body.launcher .auth .auth-form {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    color: var(--white-color);
+    justify-content: center;
+}
+
+body.launcher .auth .auth-form span {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+body.launcher .auth .auth-form input {
+    margin-top: 15px;
+}
+
+body.launcher .auth .auth-form button {
+    margin-top: 15px;
+}
+
+body.launcher .auth .separator {
+    height: 300px;
+    width: 1px;
+    border: 1px solid var(--white-color);
+    margin: 0 50px;
+}
+
+a:hover {
+    color: #5078c9 !important;
+}
+
+/** Header **/
+
+header ul li a {
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+header ul li a.selected {
+    color: var(--blue-color);
+}
+
+.header-colors {
+    color: var(--white-color)!important;
+    background-color: var(--secondary-color) !important;
+}
+
+header .login-container-hide {
+    display: none;
+}
+
+/** Main **/
+
+main {
+    background-color: var(--secondary-color);
+    height: calc(100% - 72px)
+}
+
+main .charts-information {
+    margin: 0 0 20px 10px;
+    display: flex;
+    position: relative;
+}
+
+main .trades-notificacions {
+    background-color: var(--primary-color);
+}
+
+main .charts-information .window {
+    flex: 1;
+    margin-right: 10px;
+    border: 1px solid var(--white-color);
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background: var(--primary-color);
+    padding: 5px;
+    border-radius: 6px;
+}
+
+main .charts-information .window .chart {
+    height: 100%;
+    /*padding: 10px;*/
+}
+
+main .charts-information .window .chart.full-screen {
+    width: 100%;
+}
+
+main .charts-information .window .data {
+    height: 100%;
+    border-left: 1px solid var(--white-color);
+    width: 25%;
+    padding: 10px;
+}
+
+main .charts-information .window .data.hide-data {
+    display: none !important;
+}
+
+main .charts-information .window .data .bot-settings.collapse.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.charts-information .window .button-collapse .charts-info-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.charts-information .window .button-collapse .charts-info-button-container .charts-info-button-container-span {
+    flex: 1;
+}
+
+.charts-information .minimized-charts {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+}
+
+.charts-information .minimized-charts .minimized-window.maximized-chart {
+    display: none !important;
+}
+
+.charts-information .window.minimize-chart {
+    display: none !important;
+}
+
+.charts-information .minimized-charts .minimized-window {
+    width: 250px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--white-color);
+    border-bottom: 0;
+    color: var(--white-color);
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    margin-right: 10px;
+    display: flex;
+}
+
+.charts-information .minimized-charts .minimized-window .minimized-name {
+    flex: 1
+}
+
+.button-collapse[aria-expanded=false] .text-expanded {
+    display: none;
+}   
+.button-collapse[aria-expanded=true] .text-collapsed {
+    display: none;
+}
+
+.accordion-button::after {
+    background-image: none !important;
+}
+
+.bot-settings .accordion-button {
+    display: block;
+}
+
+.bot-settings i.text-expanded[aria-expanded=false] {
+    display: none;
+}   
+.bot-settings i.text-collapsed[aria-expanded=true] {
+    display: none;
+}
+
+.bot-settings .accordion-button .accordion-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bot-settings .accordion-button .accordion-button-container i, .bot-settings .accordion-button .accordion-button-container div {
+    cursor: pointer;
+}
+
+.bot-settings .accordion-button .accordion-button-container .accordion-button-container-span {
+    flex: 1;
+}
+
+.market-settings span {
+    color: var(--white-color);
+}
+
+.window .chart {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.window .chart .tradingview-widget-container {
+    height: calc(100% - 32px - 40px); /* 100% - info trading view container height - buttons height */
+    padding: 0 10px 0 4px;
+}
+
+.window .chart .chart-buttons {
+    z-index: 9999;
+    display: flex;
+    padding: 5px 10px 5px 5px;
+}
+
+.buy-sell-buttons {
+    margin-top: auto;
+}
+
+.window .chart .chart-options {
+    /*position: absolute;
+    top: 5px;
+    left: 5px;*/
+}
+
+.toast  {
+    z-index: 99999;
+}
+
+.window .chart .chart-menu {
+    /*position: absolute;
+    top: 5px;
+    left: 5px;*/
+    margin-left: auto;
+}
+
+/* login-register-modals */
+
+form .settings-buttons button {
+    margin-right: 5px;
+}
+
+form .settings-buttons input {
+    margin-left: 5px;
+}
+
+/** Elementos definidos **/
+
+.btn-1 {
+    background-color: var(--blue-color) !important;
+    color: var(--white-color) !important;
+}
+
+.btn-2 {
+    background-color: var(--tertiary-color) !important;
+    color: var(--white-color) !important;
+}
+
+.accordion-collapse span {
+    color: var(--white-color);
+}
+
+.form-select {
+    width: 50% !important;
+}
+.form-control {
+    width: 50% !important;
+}
+
+.accordion-item {
+    background-color: var(--tertiary-color) !important;
+}
+
+.accordion-button {
+    background-color: var(--tertiary-color) !important;
+    color: var(--white-color);
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--blue-color) !important
+}
+
+.accordion-button.collapsed {
+    color: var(--white-color) !important
+}
+
+.accordion-button-container i.bi-trash-fill {
+    margin-right: 3px;
+}
+
+.window .data.collapse:not(.show) {
+    display: none !important;
+}
+
+.accordion-collapse div.strategy-container {
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1px solid var(--white-color);
+}
+
+.accordion-collapse div.strategies-modal {
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1px solid var(--white-color);
+}
+
+.accordion-collapse div.container-money-investment {
+    color: var(--white-color);
+}
+
+/* Landing page */
+main.landing-page {
+
+}
+
+main.landing-page .lema {
+    display: flex;
+    flex-direction: column;
+    color: var(--white-color);
+}
+
+main.landing-page .lema > div {
+    width: 75%;
+    align-self: center;
+    text-align: center;
+    padding: 35px;
+}
+
+main.landing-page .top-crypto {
+    display: flex;
+    background-color: var(--white-color);
+    height: 400px;
+}
+
+
+main.landing-page .start-trading {
+    display: flex;
+    height: 400px;
+}
+
+
+/** Trades - Notifications **/
+
+.trades-notificacions {
+    height: calc(25% - 20px);
+    border-top: 2px solid var(--white-color);
+}
+
+#trades {
+    width: 60%;
+    padding: 10px 10px 0 10px;
+    border-right: 2px solid var(--white-color);
+    overflow-y: auto;
+}
+
+.trades-notificacions #trades div.trade-trading {
+    border-radius: 10px;
+    background-color: var(--tertiary-color);
+    color: var(--white-color);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.trades-notificacions #trades .trade-icon {
+    width: 30px;
+}
+
+.trades-notificacions #trades div.trade-trading-title {
+    color: var(--white-color);
+    display: flex;
+    flex-direction: row;
+    margin-right: 16px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.trades-notificacions #trades div.trade-trading-title > div {
+    
+}
+
+.trades-notificacions #trades div.trade-trading .main-info {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    padding: 10px;
+    align-items: center;
+}
+
+.trades-notificacions #trades div.trade-trading .collapsed-info > div {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid white;
+    align-items: center;
+    padding: 10px;
+}
+
+.trades-notificacions #trades div.trade-trading .collapsed-info > div .trade-bot-strategy-options {
+    flex-grow: 1;
+    align-items: center;
+}
+
+.trades-notificacions #trades div.trade-trading .collapsed-info > div .trade-chart-bot-names {
+    width: 20%;
+    align-items: center;
+}
+
+#add-chart {
+    width: 10%;
+    padding: 10px;
+    justify-content: center;
+    color: var(--white-color);
+}
+
+.trade-title {
+    color: var(--white-color);
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+/** Operations on Trading **/
+
+#actual-operations {
+    width: 30%;
+    padding: 10px;
+    border-right: 2px solid var(--white-color);
+    overflow-y: auto;
+}
+
+#actual-operations .operation-container {
+    border-radius: 10px;
+    background-color: var(--tertiary-color);
+    color: var(--white-color);
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    padding: 10px;
+    align-items: center;
+}
+
+#actual-operations .operations-title {
+    color: var(--white-color);
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    padding: 10px;
+    align-items: center;
+    font-weight: bold;
+}
+
+#actual-operations .operations-title > div {
+    text-align: center;
+}
+
+#actual-operations .operation-container > div {
+    text-align: center;
+}
+
+#actual-operations .operation-container > div.bot-name, #actual-operations .operations-title > div.bot-name {
+    width: 17.5%;
+}
+
+#actual-operations .operation-container > div.operation-entry-price, #actual-operations .operations-title > div.operation-entry-price {
+    width: 20%;
+}
+
+#actual-operations .operation-container > div.operation-state, #actual-operations .operations-title > div.operation-state {
+    width: 17.5%;
+}
+
+#actual-operations .operation-container > div.operation-percentage, #actual-operations .operations-title > div.operation-percentage {
+    width: 17.5%;
+}
+
+#actual-operations .operation-container > button, #actual-operations .operations-title > div.operation-button {
+    width: 27.5%;
+}
+
+/** SIMULATION **/
+
+.simulation-info {
+    height: 80px;
+    padding: 20px;
+    padding-top: 0;
+    color: var(--white-color);
+}
+
+.simulation-content {
+    height: calc(100% - 80px);
+}
+
+#simulation-chart-options {
+    
+}
+
+#simulation-chart-options select, #simulation-chart-options input {
+    padding: 5px;
+    border-radius: 6px;
+    border: 0;
+    width: 100%;
+}
+
+#simulation-chart-options > div {
+    padding-right: 15px;
+}
+
+#simulation-chart-options > div > span {
+    margin-right: 10px;
+}
+
+#simulation-bot-options {
+    overflow-x: auto;
+    padding: 8px;
+}
+
+#simulation-bot-options .modal-content {
+    color: black;
+}
+
+#simulation-bot-options > button {
+    width: 100%;
+    height: 100%;
+}
+
+#simulation-add-button {
+    padding: 8px;
+}
+
+#simulation-add-button > button {
+    width: 100%;
+    height: 100%;
+}
+
+.simulation-content .simulation-trades {
+    padding-left: 10px;
+}
+
+.simulation-content .simulation-trades .trade-titles {
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    height: 5%;
+    width: 100%;
+    color: white;
+    justify-content: space-around;
+    font-weight: bold;
+    padding: 0 20px 0 10px;
+}
+
+.simulation-content .simulation-trades .trade-titles > div {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    justify-content: center;
+    text-align: center;
+}
+
+.simulation-content .simulation-trades .trade-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 89%;
+}
+
+.simulation-content .simulation-trades .trade {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--tertiary-color);
+    margin-bottom: 5px;
+}
+
+.simulation-content .simulation-trades .trade-label {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    height: 6%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#settingsModal .modal-body form > h6 {
+    text-align: left;
+    font-weight: bold;
+}
+
+#settingsModal .modal-body form > h7 {
+    text-align: left;
+}
+
+/* Trade types */
+
+.trade {
+    color: var(--white-color);
+}
+
+.trade > div {
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid var(--blue-color);
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    padding: 0 5px;
+    justify-content: center;
+    text-align: center;
+    width: 20%;
+}
+
+.trade .trade-icon {
+    display: flex;
+    align-items: center;
+}
+
+.trade .trade-percentage.negative_percentage {
+    border-color: #973232;
+}
+
+.trade .trade-percentage.positive_percentage {
+    border-color: #278f3e;
+}
+
+.trade.trade-close .trade-decision {
+    width: 20% !important;
+}
+
+#tv_chart_container {
+    
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+
+}
+
+.no-trades {
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+#form_settings {
+    width: 100%;
+}

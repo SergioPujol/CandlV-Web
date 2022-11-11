@@ -1,0 +1,176 @@
+<html>
+<head>
+  <title>CandlV</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body class="h-100 d-flex flex-column">
+
+  <header class="p-3 headers-colors" style="background-color: #21252b">
+      <div class="d-flex flex-wrap align-items-center justify-content-center">
+        <div class="d-flex my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+          <img src="./assets/CV.png" alt="CVLogo" style="height: 40px;">
+        </div>
+
+        <ul class="nav col-12 col-md-auto me-lg-auto mb-2 justify-content-center mb-md-0 mx-auto">
+          <li><a href="trading.html" class="px-4 selected">Trading</a></li>
+        </ul>
+
+        <div class="col-md-3 text-end">
+          
+          <button type="button" class="btn btn-2 me-2" data-bs-toggle="modal" data-bs-target="#settingsModal"><i class="bi bi-sliders"></i></button>
+          
+          <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex flex-row">
+                  <form class="d-flex flex-column m-0" id="form_settings">
+                    <h6>Binance Keys</h6>
+                    <input type="password" autocomplete="off" id="pb_bkey" placeholder="Public Binance Key" class="mb-2 p-2 rounded border border-secondary" />
+                    <input type="password" autocomplete="off" id="pv_bkey" placeholder="Private Binance Key" class="mb-2 p-2 rounded border border-secondary" />
+                    <div class="d-flex justify-content-center form-switch">
+                      <label class="form-check-label" for="testnetCheckbox">Use testnet Network</label>
+                      <input class="form-check-input ms-2" type="checkbox" id="testnetCheckbox" checked>
+                    </div>
+                    <div class="settings-buttons d-flex flex-row pt-2 pb-2" style="margin-top: auto">
+                      <input type="submit" class="btn btn-1 ms-0 w-100" value="Save" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+
+  <main class="flex-grow-1">
+
+    <div class="h-75 charts-information"> <!-- Contenedores de las charts -->
+
+      <div class="minimized-charts">
+        
+      </div>
+
+      <!-- MODAL -->
+      <div class="modals">
+        
+      </div>
+      <!-- CLOSE MODAL -->
+
+    </div>
+
+    <div class="trades-notificacions d-flex flex-row"> <!-- Contenedor de todos los trades e info, posibilidad de minimizar cada uno -->
+      
+      <div id="trades">
+        <div class="trade-title">Trades</div>
+        <div class="trade-trading-title">
+          <div class="trade-icon">Icon</div>
+          <div class="trade-order col">Trade</div>
+          <div class="trade-symbol col">Symbol</div>
+          <div class="trade-entry-price col">Entry price</div>
+          <div class="trade-symbol-quantity col">Symbol Quantity</div>
+          <div class="trade-usdt-quantity col">USDT Quantity</div>
+          <div class="trade-percentage col">Percentage</div>
+          <div class="trade-time col">Date</div>
+        </div>
+        <!--<div class="trade-trading">
+          <div class="main-info">
+            
+            <div class="trade-icon"><i class="bi bi-graph-up"></i></div>
+            <div class="trade-order col">BUY</div>
+            <div class="trade-symbol col">ETHUSDT</div>
+            <div class="trade-entry-price col">1300.79 USDT</div>
+            <div class="trade-symbol-quantity col">0.028 BTC</div>
+            <div class="trade-usdt-quantity col">100 USDT</div>
+            <div class="trade-time col">19:13:10</div>
+
+            <div data-bs-toggle="collapse" data-bs-target="#trade-botId" aria-expanded="false" aria-controls="trade-botId"><i class="bi bi-caret-down-fill"></i></div>
+          </div>
+          <div class="collapsed-info collapse multi-collapse" id="trade-botId">
+            <div>
+              <div class="trade-chart-bot-names trade-chart-info"><strong>Chart Id:</strong> <span>aaaa</span></div>
+              <div class="trade-chart-bot-names trade-bot-info"><strong>Bot Name:</strong> <span>Ethereum1</span></div>
+              <div class="trade-bot-strategy-options"><strong>Strategy options:</strong> <span>DEMA - 3 - 6</span></div>
+            </div>
+          </div>
+        </div>-->
+      </div>
+
+      <div id="actual-operations">
+        <div class="trade-title">Operations</div>
+        <div class="d-flex flex-row operations-title">
+          <div class="bot-name">Bot Name</div>
+          <div class="operation-state">State</div>
+          <div class="operation-entry-price">Price</div>
+          <div class="operation-percentage">Percentage</div>
+          <div class="operation-button">Start/Stop</div>
+        </div>
+      </div>
+
+      <div id="add-chart" class="d-flex flex-column">
+        <div class="d-flex flex-row align-items-center mb-2">
+          <span class="col-md-6">Symbol</span>
+          <select class="col-md-6 form-select" id="add-chart-symbol">
+            <!--<option value="bnbbusd">BNBBUSD</option>
+            <option value="btcbusd">BTCBUSD</option>
+            <option value="ethbusd">ETHBUSD</option>
+            <option value="ltcbusd">LTCBUSD</option>
+            <option value="trxbusd">TRXBUSD</option>
+            <option value="xrpbusd">XRPBUSD</option>-->
+            <option value="bnbusdt">BNBUSDT</option>
+            <option value="btcusdt" selected>BTCUSDT</option>
+            <option value="ethusdt">ETHUSDT</option>
+            <option value="ltcusdt">LTCUSDT</option>
+            <option value="trxusdt">TRXUSDT</option>
+            <option value="xrpusdt">XRPUSDT</option>
+            <!--<option value="bnbbtc">BNBBTC</option>
+            <option value="ethbtc">ETHBTC</option>
+            <option value="ltcbtc">LTCBTC</option>
+            <option value="trxbtc">TRXBTC</option>
+            <option value="xrpbtc">XRPBTC</option>
+            <option value="ltcbnb">LTCBNB</option>
+            <option value="trxbnb">TRXBNB</option>
+            <option value="xrpbnb">XRPBNB</option>-->
+          </select>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-2">
+          <span class="col-md-6">Interval</span>
+          <select class="col-md-6 form-select" id="add-chart-interval">
+            <option value="1">1m</option>
+            <option value="3">3m</option>
+            <option value="5" selected>5m</option>
+            <option value="15">15m</option>
+            <option value="30">30m</option>
+            <option value="60">1h</option>
+            <option value="120">2h</option>
+            <option value="180">3h</option>
+            <option value="240">4h</option>
+            <option value="D">1d</option>
+            <option value="W">1s</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-1">Create chart</button>
+      </div>
+      
+    </div>
+
+  </main>
+
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script src="../js/methods.js"></script>
+  <script src="../js/trading_requests.js"></script>
+  <script src="../js/trading.js"></script>
+  <script src="../js/ws.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+</body>
+</html>

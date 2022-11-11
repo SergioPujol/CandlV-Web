@@ -1,0 +1,27 @@
+{
+  "name": "desktop-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dbserver": "node Server_DB/server.js",
+    "web": "node Web/index.js",
+    "pserver": "ts-node Server_Process/index.ts",
+    "start": "concurrently --kill-others \"npm run dbserver\" \"npm run web\" \"npm run pserver\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergioPujol/TrabajoFinGrado.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergioPujol/TrabajoFinGrado/issues"
+  },
+  "homepage": "https://github.com/SergioPujol/TrabajoFinGrado#readme",
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "ts-node": "^10.9.1"
+  }
+}
