@@ -68,9 +68,9 @@ abstract class Strategies {
         return (((parseFloat(actualPrice) - lastPrice) / lastPrice) * 100).toFixed(3) + '%'
     }
 
-    changeState(state: "None" | "InLong") {
+    changeState(state: "None" | "InLong", price: string) {
         this.state = state;
-        if(state === "InLong") this.lastCallPrice = this.pricedateObject!.actualPrice
+        if(state === "InLong") this.lastCallPrice = price
     }
 
 }

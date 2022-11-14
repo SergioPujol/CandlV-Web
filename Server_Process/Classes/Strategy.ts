@@ -168,7 +168,7 @@ class Strategy {
             date: Date.now(),
             state: 'None'
         })
-        this.selectedStrategy.changeState('None')
+        this.selectedStrategy.changeState('None', '')
     }
 
     async startClientOperation() {
@@ -179,7 +179,7 @@ class Strategy {
             date: Date.now(),
             state: 'InLong'
         })
-        this.selectedStrategy.changeState('InLong')
+        this.selectedStrategy.changeState('InLong', this.lastEntryPrice)
     }
 
 }
