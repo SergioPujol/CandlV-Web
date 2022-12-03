@@ -54,11 +54,12 @@ class Strategy {
         // then, if respond its fine, sendNotification
         // if decision is hold or await, just sendNotification
         try {
-            if(!this.bot.client || decision.decision === DecisionType.Hold) this.notification!.sendNotification(decision)
+            if(!this.bot.client) sendErrorToWeb('Invalid client', this.bot.userId, this.bot.botId);
+            else if(decision.decision === DecisionType.Hold) this.notification!.sendNotification(decision)
             else if(decision.decision === DecisionType.Buy) {
                 const investmentQuantity = await this.calculateInvestment()
                 await this.bot.client.buy(this.bot.symbol, investmentQuantity).then((res: any) => {
-                    if(!res) return
+                    if(!res) sendErrorToWeb('Order could not be completed', this.bot.userId, this.bot.botId);
                     else {
                         const trade: Trade = {
                             type: 'BUY',
@@ -86,23 +87,26 @@ class Strategy {
                     this.notification!.sendNotification(decision)
                 } else {
                     await this.bot.client.sell(this.bot.symbol, this.symbolBoughtQuantity).then((res: any) => {
-                        const trade: Trade = {
-                            type: 'SELL',
-                            symbol: this.bot.symbol,
-                            entry_price: res.fills[0].price,
-                            percentage: this.getPercentageFromLastCross(res.fills[0].price),
-                            symbol_quantity: res.executedQty,
-                            usdt_quantity: res.cummulativeQuoteQty,
-                            time: res.transactTime,
-                            bot_strategy: this.bot.strategy,
-                            bot_options: this.bot.botOptions,
-                            chart_id: this.bot.chartId,
-                            bot_id: this.bot.botId,
-                            user_id: this.bot.userId
+                        if(!res) sendErrorToWeb('Order could not be completed', this.bot.userId, this.bot.botId);
+                        else {
+                            const trade: Trade = {
+                                type: 'SELL',
+                                symbol: this.bot.symbol,
+                                entry_price: res.fills[0].price,
+                                percentage: this.getPercentageFromLastCross(res.fills[0].price),
+                                symbol_quantity: res.executedQty,
+                                usdt_quantity: res.cummulativeQuoteQty,
+                                time: res.transactTime,
+                                bot_strategy: this.bot.strategy,
+                                bot_options: this.bot.botOptions,
+                                chart_id: this.bot.chartId,
+                                bot_id: this.bot.botId,
+                                user_id: this.bot.userId
+                            }
+                            // get values to send to Trade DB
+                            this.symbolBoughtQuantity = 0
+                            this.notification!.sendNotification(decision, trade)
                         }
-                        // get values to send to Trade DB
-                        this.symbolBoughtQuantity = 0
-                        this.notification!.sendNotification(decision, trade)
                     })
                 }
             } 
@@ -110,7 +114,6 @@ class Strategy {
             console.log('Order could not be completed')
             sendErrorToWeb('Order could not be completed', this.bot.userId, this.bot.botId);
         }
-        
     
     }
 

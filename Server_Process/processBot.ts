@@ -40,7 +40,7 @@ class processBot {
         try {
             this.bots[user_id][bot_id].deleteBot();
             delete this.bots[user_id][bot_id];
-            if(Object.keys(this.bots[user_id].length == 0)) delete this.bots[user_id];
+            if(Object.keys(this.bots[user_id]).length == 0) delete this.bots[user_id];
             return true
         } catch (error) {
             console.log(`Error deleting bot on Server Process ${bot_id}`)

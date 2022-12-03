@@ -21,6 +21,17 @@ class Client {
         this.testnet = _testnet
     }
 
+    async testConnection() {
+        return this.signRequest(
+            'GET',
+            '/api/v3/account'
+        ).then((res: any) => {
+            return true
+        }).catch((error: any) => {
+            return false
+        })
+    }
+
     async getUsdtBalance() {
         return this.signRequest(
             'GET',
@@ -28,9 +39,9 @@ class Client {
         ).then((res: any) => {
             if(res.status == 200) {
                 return res.data.balances.find((asset: any) => asset.asset === 'USDT').free
-            } else {
-                return { error: 'Invalid Api Keys' } 
-            }
+            } else throw new Error()
+        }).catch((error: any) => {
+            return { error: 'Invalid Api Keys' } 
         })
     }
 
@@ -41,9 +52,9 @@ class Client {
         ).then((res: any) => {
             if(res.status == 200) {
                 return res.data.balances.find((asset: any) => asset.asset === symbol).free
-            } else {
-                return { error: 'Invalid Api Keys' } 
-            }
+            } else throw new Error()
+        }).catch((error: any) => {
+            return { error: 'Invalid Api Keys' } 
         })
     }
 
@@ -62,7 +73,9 @@ class Client {
             if(res.status === 200) {
                 console.log(res.data)
                 return res.data
-            } else return false
+            } else throw new Error()
+        }).catch((error: any) => {
+            return false
         })
     }
 
@@ -81,7 +94,9 @@ class Client {
             if(res.status === 200) {
                 console.log(res.data)
                 return res.data
-            } else return false
+            } else throw new Error()
+        }).catch((error: any) => {
+            return false
         })
     }
 
@@ -93,7 +108,6 @@ class Client {
           .update(queryString)
           .digest('hex');
 
-        console.log(`${queryString}&signature=${signature}`)
         return createRequest({
           method,
           baseURL: this.testnet ? 'https://testnet.binance.vision/' : 'https://api.binance.com/api/',

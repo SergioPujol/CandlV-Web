@@ -12,7 +12,7 @@ class Bot {
 
     client: Client;
 
-    private strategy: Strategy;
+    strategy: Strategy;
 
     private bot: BotModel;
 
@@ -56,12 +56,17 @@ class Bot {
 
     async getWaitStart() {
         const nextCandleTimestamp = await getTimeRemainingToNextCandle(this.bot.symbol, this.bot.interval)
-        if(nextCandleTimestamp) return nextCandleTimestamp - Date.now();
+        if(nextCandleTimestamp) return nextCandleTimestamp[0][6] + 1001 - Date.now();
     }
 
     deleteBot() {
         this.isBotDeleted = true;
         clearInterval(this.botInterval)
+    }
+
+    isBotActive() {
+        if(this.isBotDeleted) return false
+        return true
     }
 
     getId() {
