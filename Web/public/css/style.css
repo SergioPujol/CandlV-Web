@@ -183,6 +183,7 @@ main .charts-information .window .data .bot-settings.collapse.show {
 }
 
 .charts-information .minimized-charts .minimized-window {
+    z-index: 999;
     width: 250px;
     background-color: var(--primary-color);
     border: 1px solid var(--white-color);
@@ -203,6 +204,12 @@ main .charts-information .window .data .bot-settings.collapse.show {
 }   
 .button-collapse[aria-expanded=true] .text-collapsed {
     display: none;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .accordion-button::after {
@@ -250,30 +257,25 @@ main .charts-information .window .data .bot-settings.collapse.show {
 }
 
 .window .chart .chart-buttons {
-    z-index: 9999;
+    z-index: 999;
     display: flex;
     padding: 5px 10px 5px 5px;
+}
+
+.window .chart .chart-title {
+    color: var(--white-color);
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
 }
 
 .buy-sell-buttons {
     margin-top: auto;
 }
 
-.window .chart .chart-options {
-    /*position: absolute;
-    top: 5px;
-    left: 5px;*/
-}
-
 .toast  {
     z-index: 99999;
-}
-
-.window .chart .chart-menu {
-    /*position: absolute;
-    top: 5px;
-    left: 5px;*/
-    margin-left: auto;
 }
 
 /* login-register-modals */

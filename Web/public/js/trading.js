@@ -147,6 +147,7 @@ async function createHtmlWindow(chartId, options) {
                     <i class="bi bi-dash"></i>
                 </button>
             </div>
+            <div class="chart-title">Chart ${chartId}</div>
             <div class="chart-menu" id="window-${chartId}-chart-menu">
                 <button type="button" class="btn btn-2">
                     <i class="bi bi-list"></i>
@@ -164,7 +165,7 @@ async function createHtmlWindow(chartId, options) {
         </div>
         <div id="window-${chartId}-data" class="data d-flex flex-column">
 
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column overflow-hidden">
             <button class="btn btn-2 mb-2 button-collapse show" type="button" data-bs-toggle="collapse" data-bs-target="#window-${chartId}-data-market" aria-expanded="true" aria-controls="window-${chartId}-data-market">
             <div class="charts-info-button-container">
                 <span class="charts-info-button-container-span">Market Settings</span>
@@ -195,7 +196,7 @@ async function createHtmlWindow(chartId, options) {
             </button>
 
             <div class="collapse multi-collapse overflow-hidden bot-settings" id="window-${chartId}-data-bot">
-                <div class="overflow-auto">
+                <div class="overflow-auto d-flex">
                     <div class="accordion" id="botAccordion-${chartId}">
                     </div>
                 </div>
@@ -406,7 +407,7 @@ function createHtmlBot(chartId, botId, options) {
       <div class="accordion-button">
         <div class="accordion-button-container">
           <span class="accordion-button-container-span">Bot ${options.name}</span>
-          <div class="form-check form-switch">
+          <div class="form-check form-switch ms-2">
             <input class="form-check-input" type="checkbox" id="status-bot-${botId}" ${options.status ? 'checked':''}>
           </div>
           <i class="bi bi-trash-fill" data-bs-toggle="modal" data-bs-target="#modal-bot-${botId}"></i>
